@@ -15,7 +15,8 @@
 @interface MainViewController () <SBSPuppetViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, readonly) MainView *contentView;
 @property (nonatomic, strong) NSTimer *durationTimer;
-@property (nonatomic, strong) NSArray *puppetNames;
+@property (nonatomic, strong) NSMutableArray *puppetNames;
+@property (nonatomic, strong) NSURL *memojiURL;
 @property (nonatomic, assign) BOOL hasExportedMovie;
 @property (nonatomic, assign, getter=isExporting) BOOL exporting;
 @end
@@ -26,8 +27,15 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.title = NSLocalizedString(@"MAIN_TITLE", @"");
-        self.puppetNames = [AVTPuppet puppetNames];
+
+        AVTResourceLocator* locator = [AVTResourceLocator sharedResourceLocator];
+
+        NSURL* url = (NSURL*)[locator memojiResourcesURL];
+        self.memojiURL = url;
+
+        self.title = NSLocalizedString(@"Animoji Heaven", @"");
+        self.puppetNames = [NSMutableArray arrayWithArray:[AVTAnimoji animojiNames]];
+        [self.puppetNames addObject:@"personal"];
     }
     return self;
 }
@@ -164,8 +172,14 @@
 }
 
 - (void)showPuppetNamed:(NSString *)puppetName {
-    AVTPuppet *puppet = [AVTPuppet puppetNamed:puppetName options:nil];
-    [self.contentView.puppetView setAvatarInstance:(AVTAvatarInstance *)puppet];
+    AVTAvatarInstance* avatar = nil;
+    if ([puppetName isEqualToString:@"personal"]) {
+        avatar = [AVTMemoji memoji];
+    } else {
+        avatar = [AVTAnimoji animojiNamed:puppetName];
+    }
+
+    [self.contentView.puppetView setAvatarInstance:(AVTAvatarInstance *)avatar];
 }
 
 // Pragma mark: - SBSPuppetViewDelegate
@@ -192,7 +206,7 @@
 - (void)puppetViewDidStopRecording:(SBSPuppetView *)puppetView {
     if (self.isExporting) {
         // The callback is called when we start exporting.
-        // It's not intuitive but internally, AVTPuppetView is
+        // It's not intuitive but internally, AVTAnimojiView is
         // calling stopRecording which then triggers this callback.
         return;
     }
@@ -224,7 +238,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PuppetThumbnailCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"thumbnail" forIndexPath:indexPath];
     NSString *puppetName = self.puppetNames[indexPath.item];
-    cell.thumbnailImageView.image = [AVTPuppet thumbnailForPuppetNamed:puppetName options:nil];
+    if (![puppetName isEqualToString:@"personal"]) {
+        cell.thumbnailImageView.image = [AVTAnimoji thumbnailForAnimojiNamed:puppetName options:nil];
+    }
     return cell;
 }
 

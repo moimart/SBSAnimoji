@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D63EF6B20C85E820085E425 /* AVTAvatar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVTAvatar.h; sourceTree = "<group>"; };
 		720385211FB0F9D900FDEDE6 /* SBSAnimoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SBSAnimoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7203853B1FB0FA1A00FDEDE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7203853C1FB0FA1A00FDEDE6 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				7203854B1FB0FA1A00FDEDE6 /* AVTAvatarView.h */,
+				0D63EF6B20C85E820085E425 /* AVTAvatar.h */,
 				720385581FB0FA1A00FDEDE6 /* AVTPuppet.h */,
 				7203855B1FB0FA1A00FDEDE6 /* AVTPuppetView.h */,
 			);
@@ -355,7 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8NQFWJHC63;
+				DEVELOPMENT_TEAM = 39E4GQM8LC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -374,7 +376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8NQFWJHC63;
+				DEVELOPMENT_TEAM = 39E4GQM8LC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

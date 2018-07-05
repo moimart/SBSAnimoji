@@ -42,6 +42,7 @@ exports:
                        _AVTAssetInfo, _AVTAvatar, _AVTAvatarAssetLibrary, 
                        _AVTAvatarEditorView, _AVTAvatarInstance, _AVTAvatarSkeletonInstance, 
                        _AVTAvatarView, _AVTColorPreset, _AVTComponent, 
+			_AVTPersonalAnimoji, _AVTAnimoji, _AVTMemoji,
                        _AVTComponentInstance, _AVTCorrectiveMorpherDescriptor, 
                        _AVTEncodingContext, _AVTMaterial, _AVTParameterValue, 
                        _AVTPhysicalizedMorpherDescriptor, _AVTPhysicsController, 
